@@ -14,7 +14,9 @@
 <body>
 
    <header>
-        <div class="logo">GSAM</div>
+        <div class="logo-container">
+            <img src="<?= base_url('logo/global-service.png') ?>" alt="Logo Audio Mobil" class="audio-mobil-logo">
+        </div>
         <nav>
             <a href="<?= base_url('/') ?>">Beranda</a>
             

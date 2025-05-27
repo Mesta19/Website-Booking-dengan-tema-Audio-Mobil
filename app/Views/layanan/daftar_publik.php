@@ -12,8 +12,45 @@
 
         <?php if (!empty($layanan_tersedia) && is_array($layanan_tersedia)): ?>
             <div class="layanan-grid-public">
+                <?php
+                    $direktoriGambar = ROOTPATH . 'public/gambar_layanan/';
+                    $daftarGambar = glob($direktoriGambar . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                    $jumlahGambar = count($daftarGambar);
+                    $gambarSudahDipakai = []; // Array untuk melacak gambar yang sudah digunakan
+
+                    if (empty($daftarGambar)) {
+                        $gambarDefault = 'https://via.placeholder.com/300/cccccc/ffffff?Text=Tidak+Ada+Gambar'; // Gambar placeholder jika tidak ada gambar di direktori
+                    }
+                ?>
                 <?php foreach ($layanan_tersedia as $layanan_item): ?>
                     <div class="layanan-card-public">
+                        <?php if (!empty($daftarGambar)): ?>
+                            <?php
+                                $gambarAcak = '';
+                                $randomIndex = -1;
+                                // Cari gambar acak yang belum digunakan
+                                for ($i = 0; $i < 10; $i++) { // Batasi percobaan untuk menghindari infinite loop jika gambar lebih sedikit dari layanan
+                                    $randomIndex = array_rand($daftarGambar);
+                                    if (!in_array($randomIndex, $gambarSudahDipakai)) {
+                                        $gambarAcak = base_url('gambar_layanan/' . basename($daftarGambar[$randomIndex]));
+                                        $gambarSudahDipakai[] = $randomIndex;
+                                        break;
+                                    }
+                                }
+                                // Jika setelah beberapa percobaan tidak menemukan gambar unik, gunakan gambar acak terakhir yang didapatkan
+                                if (empty($gambarAcak) && !empty($daftarGambar)) {
+                                    $randomIndex = array_rand($daftarGambar);
+                                    $gambarAcak = base_url('gambar_layanan/' . basename($daftarGambar[$randomIndex]));
+                                }
+                            ?>
+                            <?php if (!empty($gambarAcak)): ?>
+                                <img src="<?= $gambarAcak ?>" alt="<?= esc($layanan_item['nama_layanan']) ?>" class="card-img-top" style="width: 100%; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+                            <?php else: ?>
+                                <img src="<?= $gambarDefault ?>" alt="Tidak Ada Gambar" class="card-img-top" style="width: 100%; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <img src="<?= $gambarDefault ?>" alt="Tidak Ada Gambar" class="card-img-top" style="width: 100%; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+                        <?php endif; ?>
                         <div class="card-content">
                             <h3><?= esc($layanan_item['nama_layanan']) ?></h3>
                             <p class="harga">Rp <?= number_format(esc($layanan_item['harga']), 0, ',', '.') ?></p>
@@ -24,20 +61,7 @@
                             </p>
                             */ ?>
                         </div>
-                        <div class="card-action">
-                             <?php // Tombol booking bisa ditambahkan di sini nanti ?>
-                             <?php // Misalnya, jika pelanggan sudah login ?>
-                             <?php /* if (session()->get('logged_in_pelanggan')): ?>
-                                <a href="<?= url_to('booking_form_show') // Anda perlu rute ini ?>?layanan=<?= esc($layanan_item['id_layanan']) ?>" class="btn-book-now-public">
-                                    <i class="fas fa-calendar-alt"></i> Booking Sekarang
-                                </a>
-                            <?php else: ?>
-                                <a href="<?= url_to('login_pelanggan_show') // Anda perlu rute ini ?>" class="btn-book-now-public">
-                                    <i class="fas fa-sign-in-alt"></i> Login untuk Booking
-                                </a>
-                            <?php endif; */ ?>
-                            <span class="info-text">Bisa di Booking pada tab Booking.</span>
-                        </div>
+                        <?php // Bagian card-action dihapus ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -55,20 +79,20 @@
 <?= $this->section('pageStyles') // Untuk CSS tambahan jika perlu ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .layanan-publik-container { 
-            padding: 2rem 0; 
+        .layanan-publik-container {
+            padding: 2rem 0;
         }
-        .page-title-public { 
-            color: #0a84ff; 
-            text-align: center; 
-            margin-bottom: 0.75rem; 
-            font-size: 2.5rem; 
+        .page-title-public {
+            color: #0a84ff;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            font-size: 2.5rem;
             font-weight: 700;
         }
-        .page-subtitle-public { 
-            text-align: center; 
-            color: #c0c0c0; 
-            margin-bottom: 3rem; 
+        .page-subtitle-public {
+            text-align: center;
+            color: #c0c0c0;
+            margin-bottom: 3rem;
             font-size: 1.15rem;
             max-width: 700px;
             margin-left: auto;
@@ -81,7 +105,7 @@
         }
         .layanan-card-public {
             background-color: #1e1e1e; /* Warna latar kartu */
-            padding: 0; /* Padding diatur oleh content dan action */
+            padding: 0; /* Padding diatur oleh content */
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             border: 1px solid #2c2c2c; /* Border kartu lebih halus */
@@ -114,37 +138,6 @@
             color: #adb5bd;
             margin-bottom: 1.25rem;
             line-height: 1.5;
-        }
-        .layanan-card-public .card-action {
-            background-color: #252525; /* Warna latar area tombol */
-            padding: 1rem 1.75rem;
-            border-top: 1px solid #383838;
-            border-bottom-left-radius: 8px; /* Menyesuaikan radius kartu */
-            border-bottom-right-radius: 8px;
-            text-align: center;
-        }
-        .btn-book-now-public {
-            display: inline-block;
-            width: 100%;
-            padding: 0.75rem 1.5rem;
-            background-color: #0a84ff;
-            color: white !important;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-            font-size: 0.95rem;
-            border: none;
-        }
-        .btn-book-now-public:hover {
-            background-color: #006ecc;
-        }
-        .btn-book-now-public i {
-            margin-right: 0.5rem;
-        }
-        .info-text { /* Teks pengganti tombol booking sementara */
-            font-size: 0.85rem;
-            color: #888;
         }
         .text-muted { color: #888 !important; }
         .fs-5 { font-size: 1.25rem !important; }
