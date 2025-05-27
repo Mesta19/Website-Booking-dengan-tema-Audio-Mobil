@@ -1,0 +1,750 @@
+/* GLOBAL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px; /* Atur jarak dari bawah sesuai keinginan */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: bounce 1.5s infinite alternate; /* Efek bouncing elegan */
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0) translateX(-50%);
+    }
+    to {
+        transform: translateY(10px) translateX(-50%);
+    }
+}
+
+.scroll-down-indicator:hover {
+    opacity: 1;
+}
+
+.scroll-down-indicator a {
+    color: white;
+    text-decoration: none;
+}
+/* Style dasar untuk tombol toko online */
+.online-shop-button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* Mencegah teks tombol pecah */
+}
+
+/* Style khusus untuk tombol Shopee */
+.shopee-button {
+    background-color: #ee4d2d; /* Warna khas Shopee */
+    color: white;
+}
+
+.shopee-button:hover {
+    background-color: #c9371a; /* Warna hover untuk Shopee */
+}
+
+/* Style khusus untuk tombol Tokopedia */
+.tokopedia-button {
+    background-color: #00AA5B; /* Warna khas Tokopedia */
+    color: white;
+}
+
+.tokopedia-button:hover {
+    background-color: #008046; /* Warna hover untuk Tokopedia */
+}
+
+/* Style untuk ikon (jika diperlukan penyesuaian) */
+.online-shop-button i {
+    margin-right: 0.5rem;
+}
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .btn-hero-primary, .btn-hero-secondary {
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px; /* Tombol lebih bulat */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            border: 2px solid transparent;
+        }
+        .btn-hero-primary {
+            background-color: white;
+            color: #0a84ff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-hero-primary:hover {
+            background-color: #f0f0f0;
+            color: #005fbb;
+            transform: translateY(-2px);
+        }
+        .btn-hero-secondary {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+        .btn-hero-secondary:hover {
+            background-color: white;
+            color: #0a84ff;
+            transform: translateY(-2px);
+        }
+
+        .page-section {
+            padding: 4rem 0;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #0a84ff;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        .section-title p {
+            font-size: 1.1rem;
+            color: #c0c0c0;
+            margin-bottom: 3rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #2c2c2c;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(10, 132, 255, 0.2);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #0a84ff;
+            margin-bottom: 1rem;
+        }
+        .feature-item h3 {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #adb5bd;
+            line-height: 1.6;
+        }
+        .btn-contact {
+            background-color: #0a84ff;
+            color: white !important;
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0.5rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .btn-contact:hover {
+            background-color:rgb(1, 110, 206);
+        }
+        .btn-contact.whatsapp {
+            background-color: #25D366;
+        }
+        .btn-contact.whatsapp:hover {
+            background-color: #1DAE50;
+        }
+        .btn-contact i {
+            margin-right: 0.6rem;
+        }
+        .text-center { text-align: center !important; }
+        .mb-4 { margin-bottom: 1.5rem !important; }
+
+.booking-details {
+            background-color: #282828;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+            border: 1px solid #3a3a3a;
+        }
+        .details-title { /* Sudah ada sebelumnya, pastikan sesuai */
+            color: #0a84ff;
+            margin-bottom: 1.25rem; /* Sedikit lebih banyak jarak bawah */
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 1px solid #383838;
+            padding-bottom: 0.75rem; /* Padding bawah judul */
+        }
+
+        /* CSS untuk Grid Detail Booking */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: auto 1fr; /* Kolom pertama auto (selebar kontennya), kolom kedua mengisi sisa */
+            gap: 0.5rem 1rem; /* Jarak antar baris dan antar kolom */
+            align-items: center; /* Rata tengah vertikal untuk setiap item grid */
+        }
+        .detail-label {
+            font-weight: 600; /* Membuat label tebal */
+            color: #e0e0e0;   /* Warna label */
+            font-size: 0.95rem;
+            padding-right: 1rem; /* Jarak kanan dari label ke value */
+            text-align: left; /* Pastikan label rata kiri */
+        }
+        .detail-value {
+            color: #c0c0c0;   /* Warna value */
+            font-size: 0.95rem;
+            text-align: left; /* Pastikan value rata kiri */
+        }
+
+        /* Menghapus margin bawah default dari <p> jika digunakan di dalam .detail-grid */
+        .detail-grid p {
+            margin-bottom: 0; 
+        }
+
+        .button-spacing {
+            margin-top: 5px;
+    margin-bottom: 10px; /* Atau nilai jarak lain yang Anda inginkan */
+}
+
+        .booking-form-container { max-width: 750px; margin: 2rem auto; }
+        .layanan-checkbox-group {
+            max-height: 200px; 
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 4px;
+            background-color: #222; 
+        }
+        .layanan-checkbox-group.is-invalid-group {
+            border-color: #dc3545 !important; 
+        }
+        .form-check { margin-bottom: 0.5rem; }
+        .form-check-input { margin-top: 0.2rem; }
+        .form-check-label { color: #e0e0e0; font-size: 0.95rem;}
+        .form-container { background-color: #1e1e1e; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #c0c0c0; font-weight: 600; }
+        .form-control { 
+            width: 100%; padding: 0.75rem; border: 1px solid #333; 
+            background-color: #282828; color: #e0e0e0; border-radius: 4px; 
+            font-size: 1rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .form-control:focus { outline: none; border-color: #0a84ff; box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.3); }
+        .form-button { display: block; width: 100%; padding: 0.85rem; background-color: #0a84ff; color: white !important; border: none; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; }
+        .form-button:hover { background-color: #006ecc; transform: translateY(-2px); }
+        .btn-secondary-action { background-color: #6c757d; color: white !important; padding: 0.75rem; text-decoration: none; border-radius: 4px; text-align:center; border:none; }
+        .btn-secondary-action:hover { background-color: #5a6268; }
+        .w-100 { width: 100% !important; }
+        .mt-2 { margin-top: 0.5rem !important; }
+        .mb-3 { margin-bottom: 1rem !important; }
+        .mb-4 { margin-bottom: 1.5rem !important; }
+        .is-invalid { border-color: #dc3545 !important; }
+        .invalid-feedback { color: #dc3545; font-size: 0.875em; margin-top: .25rem; display: block; }
+        .d-block { display: block !important; }
+        .text-center { text-align: center !important; }
+        .text-muted { color: #888 !important; }
+    
+
+.admin-content-container { 
+            background-color: #1e1e1e; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        .admin-content-container .d-flex h2 { /* Target h2 di dalam d-flex */
+            color: #0a84ff; 
+            margin-bottom: 0; 
+            font-size: 1.75rem;
+            font-weight: 600; /* Judul lebih tebal */
+        }
+        .btn-primary-action { 
+            background-color: #0a84ff; 
+            color: white !important; 
+            padding: 0.65rem 1.3rem; /* Sedikit lebih besar */
+            text-decoration: none; 
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600; 
+            border: none;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+        }
+        .btn-primary-action:hover { 
+            background-color: #006ecc; 
+            transform: translateY(-1px);
+        }
+        .btn-primary-action i {
+            margin-right: 0.5rem;
+        }
+
+        .alert {
+            margin-top: 1.5rem; /* Jarak atas dari judul/tombol tambah */
+            margin-bottom: 1.5rem;
+            border-left: 5px solid transparent;
+            padding: 0.9rem 1.25rem;
+            border-radius: 5px; /* Rounded corner alert */
+        }
+        .alert-success { border-left-color: #28a745; background-color: rgba(40, 167, 69, 0.15); color: #c3e6cb; }
+        .alert-danger { border-left-color: #dc3545; background-color: rgba(220, 53, 69, 0.15); color: #f5c6cb;}
+
+        .table-responsive {
+            margin-top: 1rem; /* Jarak dari alert atau tombol tambah jika tidak ada alert */
+        }
+        .admin-table {
+    width: 100%;
+    color: #c9d1d9;
+    border-collapse: collapse; /* Ubah ke collapse untuk border yang menyatu */
+    margin-bottom: 20px;
+    border: 2px solid #383838;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+.admin-table th, .admin-table td {
+    border: 1px solid #2e2e2e; /* Border sel lebih halus */
+    padding: 0.9rem 1.1rem; /* Sedikit peningkatan padding */
+    text-align: left; /* Default alignment kiri */
+}
+.admin-table th {
+    background-color: #2a2a2a;
+    color: #0a84ff;
+    border-bottom: 2px solid #0a84ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Menghilangkan bullet point pada list di dalam tabel layanan */
+.admin-table td ul {
+    list-style-type: none;
+    padding-left: 0; /* Menghilangkan indentasi default */
+    margin-bottom: 0; /* Menghilangkan margin bawah default list */
+}
+
+.admin-table td ul li {
+    margin-bottom: 0.2rem; /* Berikan sedikit jarak antar item jika perlu */
+}
+.admin-table td.text-center { text-align: center; }
+.admin-table td.text-right { text-align: right; }
+.admin-table tbody tr:hover {
+    background-color: #272c33;
+}
+.admin-table td:first-child, .admin-table th:first-child { padding-left: 1.25rem; }
+.admin-table td:last-child, .admin-table th:last-child { padding-right: 1.25rem; }
+
+        .table-row-deleted td { 
+            text-decoration: none; /* Hapus coretan */
+            color: #6a737d !important; /* Warna lebih redup */
+            font-style: italic; /* Miringkan teks yang dihapus */
+        }
+        .table-row-deleted .badge-danger {
+            background-color: #586069 !important; /* Warna badge "Tidak Aktif" lebih redup */
+            color: #c9d1d9 !important;
+        }
+
+        .badge {
+            padding: .4em .75em; /* Padding badge disesuaikan */
+            border-radius: 10px; /* Badge lebih bulat */
+            font-size: 0.7rem; /* Ukuran font badge */
+            font-weight: 700; /* Font lebih tebal */
+            letter-spacing: 0.3px;
+        }
+        .badge-success { background-color: #28a745; color: white; } 
+        .badge-danger { background-color: #dc3545; color: white; }
+        
+        .actions-cell .btn {
+            margin: 0 0.3rem; /* Sedikit jarak antar tombol */
+            padding: 0.45rem 0.9rem; /* Ukuran tombol */
+            font-size: 0.78rem;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            border: none;
+            font-weight: 500; /* Sedikit lebih tebal */
+            transition: all 0.2s ease-in-out;
+        }
+        .actions-cell .btn i {
+            margin-right: 0.4rem;
+        }
+        .btn-edit {
+            background-color: #ffc107; 
+            color: #212529 !important;
+        }
+        .btn-edit:hover {
+            background-color: #e0a800;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(255,193,7,0.3);
+        }
+        .btn-delete {
+            background-color: #dc3545; 
+            color: white !important;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(220,53,69,0.3);
+        }
+        
+        /* Utilitas dari pembahasan sebelumnya */
+        .d-flex { display: flex !important; }
+        .justify-content-between { justify-content: space-between !important; }
+        .align-items-center { align-items: center !important; }
+        .mb-4 { margin-bottom: 1.75rem !important; } /* Jarak bawah judul ke alert/tabel */
+        .text-muted { color: #888 !important; } /* Warna teks muted lebih jelas */
+        .text-center { text-align: center !important; }
+        .py-4 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #121212; /* Dark background */
+    color: #e0e0e0;    /* Light grey text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Memastikan footer selalu di bawah */
+}
+
+.container { /* Kelas opsional untuk pembungkus konten */
+    width: 90%;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* HEADER */
+header {
+    background: #1a1a1a; /* Slightly lighter dark */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0a84ff; /* Accent color */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+    color: #0a84ff;
+    font-weight: 700;
+    font-size: 1.5rem; /* Disesuaikan */
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+nav a {
+    color: #e0e0e0;
+    margin-left: 1.5rem; /* Disesuaikan */
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-size: 0.95rem; /* Disesuaikan */
+    padding-bottom: 5px;
+    position: relative;
+}
+
+nav a::after { /* Efek hover underline */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0a84ff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: #0a84ff;
+}
+
+
+/* MAIN CONTENT AREA */
+.main-content {
+    flex: 1; /* Membuat konten utama mengisi ruang yang tersedia */
+    padding: 2rem 0; /* Padding atas dan bawah untuk konten */
+}
+
+/* FOOTER */
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 1.5rem 2rem; /* Disesuaikan */
+    color: #888; /* Warna teks footer lebih lembut */
+    font-size: 0.9rem; /* Disesuaikan */
+    border-top: 2px solid #0a84ff;
+    margin-top: auto; /* Mendorong footer ke bawah jika konten sedikit */
+}
+
+footer a {
+    color: #0a84ff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #68b3ff; /* Warna hover lebih terang */
+}
+
+
+/* === CONTOH STYLE TAMBAHAN UNTUK FORM (SESUAIKAN) === */
+.form-container {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.form-container h2 {
+    color: #0a84ff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #c0c0c0;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="datetime-local"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    background-color: #282828;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0a84ff;
+    box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.3);
+}
+
+.form-button {
+    display: block;
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #0a84ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-button:hover {
+    background-color: #006ecc;
+    transform: translateY(-2px);
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+.alert-success {
+    background-color: #28a745; /* Hijau */
+    color: white;
+}
+.alert-danger, .alert-error { /* Menambahkan .alert-error */
+    background-color: #dc3545; /* Merah */
+    color: white;
+}
+.alert-warning {
+    background-color: #ffc107; /* Kuning */
+    color: #333;
+}
+.alert-info {
+    background-color: #17a2b8; /* Biru muda info */
+    color: white;
+}
+
+/* Validation errors styling */
+.validation-errors ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.validation-errors li {
+    color: #ff6b6b; /* Warna merah untuk error */
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .logo {
+        margin-bottom: 0.5rem; /* Disesuaikan */
+    }
+    nav {
+        margin-top: 0.5rem; /* Disesuaikan */
+    }
+    nav a {
+        margin: 0 0.75rem; /* Disesuaikan */
+        font-size: 0.9rem;
+    }
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        display: block;
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+    .logo {
+        font-size: 1.3rem;
+    }
+    .form-container h2 {
+        font-size: 1.5rem;
+    }
+}
+/* Tambahkan style berikut ke style.css Anda */
+.btn-success {
+    background-color: #28a745; /* Warna hijau Bootstrap success */
+    color: white !important;
+    border: none;
+    border-radius: 5px; /* Sesuaikan dengan border-radius tombol lain jika perlu */
+    padding: 0.6rem 1.2rem; /* Sesuaikan padding sesuai keinginan */
+    font-size: 0.9rem; /* Sesuaikan ukuran font sesuai keinginan */
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Warna hijau lebih gelap saat hover */
+}
+
+.btn-success.btn-sm {
+    padding: 0.4rem 0.8rem; /* Style untuk tombol ukuran kecil */
+    font-size: 0.8rem;
+}
+
+/* Style untuk tombol Batalkan Booking */
+.btn-booking-delete {
+    background-color: #dc3545; /* Menggunakan warna merah yang sama dengan .btn-delete */
+    color: white !important;
+    border: none;
+    border-radius: 5px; /* Mengikuti border-radius tombol lain */
+    padding: 0.65rem 1.3rem; /* Mengikuti padding .btn-primary-action yang sepertinya ukuran sedang */
+    font-size: 1rem; /* Ukuran font disesuaikan */
+    font-weight: 600; /* Mengikuti font-weight tombol lain */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.btn-booking-delete:hover {
+    background-color: #c82333; /* Warna merah lebih gelap saat hover */
+    transform: translateY(-1px); /* Efek sedikit naik saat hover */
+}
+
+/* Style untuk ukuran tombol kecil */
+.btn-booking-delete.btn-sm {
+    padding: 0.45rem 0.9rem; /* Mengikuti padding .actions-cell .btn */
+    font-size: 0.78rem;
+}
+
+.swal2-dark-popup {
+        background-color: #282c34 !important; /* Latar belakang popup gelap */
+        color: #abb2bf !important; /* Warna teks umum terang */
+        border-radius: 8px !important;
+        border: 1px solid #4b5461; /* Border tipis (opsional) */
+    }
+
+    .swal2-dark-title {
+        color: #0a84ff !important; /* Warna judul, bisa disesuaikan agar kontras. Contoh: putih atau biru muda */
+        /* Atau, jika ingin warna putih standar untuk title di dark mode: */
+        /* color: #e0e0e0 !important; */
+    }
+
+    .swal2-dark-html-container { /* Ini menargetkan kontainer teks */
+        color: #abb2bf !important; /* Warna teks konten */
+    }
+
+    .swal2-icon.swal2-warning.swal2-dark-icon {
+        border-color: #f8bb86 !important; /* Warna border ikon warning */
+        color: #f8bb86 !important; /* Warna ikon warning */
+    }
+    .swal2-dark-confirm-button,
+    .swal2-dark-cancel-button {
+        padding: 0.6em 1.2em !important;
+        font-weight: 600 !important;
+        border-radius: 5px !important;
+        margin: 0 5px !important;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
