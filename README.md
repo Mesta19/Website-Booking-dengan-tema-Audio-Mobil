@@ -34,16 +34,4 @@ Pelanggan dapat mendaftar, login, memilih layanan, dan melakukan booking dengan 
 5. Lihat riwayat booking kamu di menu **Booking Saya**.
 
 ---
-
-## Kontak
-
-| Platform | Info |
-|---|---|
-| Email | globalservice4545@gmail.com |
-| WhatsApp | +62 878 8162 0835 |
-| Shopee | [Car Audio Stereo](https://shopee.co.id) |
-| Tokopedia | [Car Audio Stereo](https://tokopedia.com) |
-
----
-
 © 2026 Global Service Audio Mobil. Hak Cipta Dilindungi.
