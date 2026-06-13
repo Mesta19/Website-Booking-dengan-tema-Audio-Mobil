@@ -1,7 +1,8 @@
-<?= $this->extend('template/layout') // Menggunakan layout utama Anda ?>
+<?= $this->extend('template/layout') // Menggunakan layout utama Anda 
+?>
 
 <?= $this->section('title') ?>
-    <?= esc($title ?? 'Booking Layanan') ?>
+<?= esc($title ?? 'Booking Layanan') ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -9,21 +10,20 @@
     <div class="form-container booking-form-container">
         <h2 class="text-center mb-4"><?= esc($title ?? 'Booking Layanan') ?></h2>
 
-        <?php if(session()->getFlashdata('success')): ?>
+        <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success" role="alert"><?= session()->getFlashdata('success') ?></div>
         <?php endif; ?>
-        <?php if(session()->getFlashdata('error')): ?>
+        <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger" role="alert"><?= session()->getFlashdata('error') ?></div>
         <?php endif; ?>
-
         <?php $validation_errors = session()->getFlashdata('validation_errors') ?? ($validation ?? null); ?>
-        <?php if(isset($validation_errors) && $validation_errors->getErrors()): ?>
+        <?php if (isset($validation_errors) && $validation_errors->getErrors()): ?>
             <div class="alert alert-danger validation-errors" role="alert">
                 <strong>Periksa kembali input Anda:</strong>
                 <ul>
-                <?php foreach ($validation_errors->getErrors() as $error): ?>
-                    <li><?= esc($error) ?></li>
-                <?php endforeach ?>
+                    <?php foreach ($validation_errors->getErrors() as $error): ?>
+                        <li><?= esc($error) ?></li>
+                    <?php endforeach ?>
                 </ul>
             </div>
         <?php endif; ?>
@@ -53,7 +53,7 @@
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </select>
-                    <?php if(isset($validation_errors) && $validation_errors->hasError('id_pelanggan_booking')): ?>
+                    <?php if (isset($validation_errors) && $validation_errors->hasError('id_pelanggan_booking')): ?>
                         <div class="invalid-feedback"><?= $validation_errors->getError('id_pelanggan_booking') ?></div>
                     <?php endif; ?>
                 </div>
@@ -61,14 +61,14 @@
                 <input type="hidden" name="id_pelanggan_booking" value="<?= esc($idPelangganSaatIni) ?>">
                 <div class="form-group mb-3">
                     <label for="nama_pemesan">Nama Pemesan</label>
-                    <input type="text" id="nama_pemesan" class="form-control" value="<?= esc($namaPelangganSaatIni) ?>" readonly style="background-color: #282828;">
+                    <input type="text" id="nama_pemesan" class="form-control form-control-readonly" value="<?= esc($namaPelangganSaatIni) ?>" readonly>
                 </div>
             <?php endif; ?>
 
             <div class="form-group mb-3">
                 <label for="tanggal_booking">Pilih Tanggal Booking</label>
                 <input type="date" name="tanggal_booking" id="tanggal_booking" class="form-control <?= (isset($validation_errors) && $validation_errors->hasError('tanggal_booking')) ? 'is-invalid' : '' ?>" value="<?= old('tanggal_booking') ?>" required>
-                <?php if(isset($validation_errors) && $validation_errors->hasError('tanggal_booking')): ?>
+                <?php if (isset($validation_errors) && $validation_errors->hasError('tanggal_booking')): ?>
                     <div class="invalid-feedback"><?= $validation_errors->getError('tanggal_booking') ?></div>
                 <?php endif; ?>
             </div>
@@ -87,7 +87,7 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <?php if(isset($validation_errors) && $validation_errors->hasError('layanan_ids')): ?>
+                    <?php if (isset($validation_errors) && $validation_errors->hasError('layanan_ids')): ?>
                         <div class="invalid-feedback d-block"><?= $validation_errors->getError('layanan_ids') ?></div>
                     <?php endif; ?>
                 <?php else: ?>
@@ -95,37 +95,49 @@
                 <?php endif; ?>
             </div>
 
-            <button type="submit" class="form-button w-100 mb-2 button-spacing"><i class="fas fa-calendar-check"></i> Buat Booking</button>
-            <a href="<?= url_to('home') ?>" class="btn btn-secondary-action w-100 button-spacing"><i class="fas fa-times"></i> Batal</a>
+            <button type="submit" class="form-button w-100 mb-3"><i class="fas fa-calendar-check"></i> Buat Booking</button>
+            <a href="<?= url_to('home') ?>" class="btn btn-secondary-action w-100"><i class="fas fa-times"></i> Batal</a>
         </form>
     </div>
 </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('pageScripts') ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tanggalBookingInput = document.getElementById('tanggal_booking');
-            if (tanggalBookingInput) {
-                const today = new Date();
-                const year = today.getFullYear();
-                let month = today.getMonth() + 1;
-                let day = today.getDate();
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tanggalBookingInput = document.getElementById('tanggal_booking');
+        if (tanggalBookingInput) {
+            const today = new Date();
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let day = today.getDate();
 
-                // Tambahkan leading zero jika bulan atau tanggal kurang dari 10
-                month = month < 10 ? '0' + month : month;
-                day = day < 10 ? '0' + day : day;
+            month = month < 10 ? '0' + month : month;
+            day = day < 10 ? '0' + day : day;
 
-                const todayFormatted = `${year}-${month}-${day}`;
-                tanggalBookingInput.setAttribute('min', todayFormatted);
-            }
-        });
-    </script>
+            const todayFormatted = `${year}-${month}-${day}`;
+            tanggalBookingInput.setAttribute('min', todayFormatted);
+        }
+    });
+</script>
 <?= $this->endSection() ?>
 
 <?= $this->section('pageStyles') ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* ... (CSS Anda yang sudah ada sebelumnya tetap di sini) ... */
-    </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    /* PERBAIKAN 1 (CSS):
+       - Menambahkan aturan CSS untuk class `form-control-readonly` 
+         agar sesuai dengan permintaan Anda.
+    */
+    .form-control-readonly {
+        background-color: #ffffff !important;
+        /* Latar belakang putih */
+        border: 1px solid #000000 !important;
+        /* Border hitam */
+        color: #6c757d !important;
+        /* Warna teks abu-abu agar terlihat seperti non-aktif */
+        cursor: not-allowed;
+        /* Mengubah cursor untuk menandakan field tidak bisa diubah */
+    }
+</style>
 <?= $this->endSection() ?>

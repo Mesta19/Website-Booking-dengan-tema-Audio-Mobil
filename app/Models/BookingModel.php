@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use CodeIgniter\Model;
 
@@ -37,5 +39,13 @@ class BookingModel extends Model
     public function detailBooking()
     {
         return $this->hasMany(DetailBookingModel::class, 'id_booking', 'id_booking');
+    }
+
+    public function hapusBookingKadaluarsa()
+    {
+        $today = date('Y-m-d');
+
+        // Hapus booking yang tanggal_booking-nya sebelum hari ini
+        return $this->where('tanggal_booking <', $today)->delete();
     }
 }

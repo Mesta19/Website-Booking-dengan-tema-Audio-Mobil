@@ -57,7 +57,7 @@ class AuthController extends BaseController
 
         if ($pelanggan && password_verify($password, $pelanggan['password_pelanggan'])) {
             if ($pelanggan['is_delete_pelanggan'] == '1') {
-                 return redirect()->back()->withInput()->with('error', 'Akun Anda telah dinonaktifkan.');
+                return redirect()->back()->withInput()->with('error', 'Akun Anda telah dinonaktifkan.');
             }
             $this->session->set([
                 'id_pelanggan' => $pelanggan['id_pelanggan'],
@@ -85,7 +85,7 @@ class AuthController extends BaseController
         // if ($this->session->get('logged_in_pelanggan')) {
         //     return redirect()->to('/')->with('info', 'Anda sudah login sebagai Pelanggan.');
         // }
-         if ($this->session->get('logged_in_admin')) {
+        if ($this->session->get('logged_in_admin')) {
             return redirect()->to('/admin/dashboard')->with('info', 'Anda sudah login sebagai Admin.');
         }
         return view('auth/login_admin'); // VIEW KHUSUS ADMIN
@@ -115,8 +115,8 @@ class AuthController extends BaseController
         $admin = $this->adminModel->where('username_admin', $username)->first();
 
         if ($admin && password_verify($password, $admin['password_admin'])) {
-             if ($admin['is_delete_admin'] == '1') {
-                 return redirect()->back()->withInput()->with('error', 'Akun Anda telah dinonaktifkan.');
+            if ($admin['is_delete_admin'] == '1') {
+                return redirect()->back()->withInput()->with('error', 'Akun Anda telah dinonaktifkan.');
             }
             $this->session->set([
                 'id_admin' => $admin['id_admin'],
@@ -144,31 +144,31 @@ class AuthController extends BaseController
     }
 
     public function prosesRegistrasiPelanggan()
-{
-    $rules = [
-        'nama_pelanggan' => 'required|min_length[3]|max_length[100]',
-        'no_hp' => 'required|min_length[10]|max_length[15]',
-        'email_pelanggan' => 'required|valid_email|is_unique[pelanggan.email_pelanggan]',
-        'password_pelanggan' => 'required|min_length[5]',
-        'konfirmasi_password' => 'required|matches[password_pelanggan]'
-    ];
+    {
+        $rules = [
+            'nama_pelanggan' => 'required|min_length[3]|max_length[100]|regex_match[/^[a-zA-Z\s]+$/]',
+            'no_hp' => 'required|min_length[10]|max_length[15]|numeric',
+            'email_pelanggan' => 'required|valid_email|is_unique[pelanggan.email_pelanggan]',
+            'password_pelanggan' => 'required|min_length[5]',
+            'konfirmasi_password' => 'required|matches[password_pelanggan]'
+        ];
 
-    if (!$this->validate($rules)) {
-        return redirect()->back()->withInput()->with('validation', $this->validator);
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('validation', $this->validator);
+        }
+
+        $data = [
+            'nama_pelanggan' => $this->request->getPost('nama_pelanggan'),
+            'no_hp' => $this->request->getPost('no_hp'),
+            'email_pelanggan' => $this->request->getPost('email_pelanggan'),
+            'password_pelanggan' => $this->request->getPost('password_pelanggan'),
+            'is_delete_pelanggan' => '0'
+        ];
+
+        if ($this->pelangganModel->insert($data)) {
+            return redirect()->to('/login-pelanggan')->with('success', 'Registrasi berhasil! Silakan login.');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Registrasi gagal, coba lagi.');
+        }
     }
-
-    $data = [
-        'nama_pelanggan' => $this->request->getPost('nama_pelanggan'),
-        'no_hp' => $this->request->getPost('no_hp'),
-        'email_pelanggan' => $this->request->getPost('email_pelanggan'),
-        'password_pelanggan' => $this->request->getPost('password_pelanggan'),
-        'is_delete_pelanggan' => '0'
-    ];
-
-    if ($this->pelangganModel->insert($data)) {
-        return redirect()->to('/login-pelanggan')->with('success', 'Registrasi berhasil! Silakan login.');
-    } else {
-        return redirect()->back()->withInput()->with('error', 'Registrasi gagal, coba lagi.');
-    }
-}
 }

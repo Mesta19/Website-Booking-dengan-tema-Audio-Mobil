@@ -1,7 +1,8 @@
-<?= $this->extend('template/layout') // Menggunakan layout utama Anda ?>
+<?= $this->extend('template/layout') // Menggunakan layout utama Anda 
+?>
 
 <?= $this->section('title') ?>
-    <?= esc($title ?? 'Beranda - Global Service Audio') ?>
+<?= esc($title ?? 'Beranda - Global Service Audio') ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -10,21 +11,24 @@
         <h1 class="hero-title">Global Service Audio Mobil</h1>
         <p class="hero-subtitle">Solusi Audio Mobil Profesional untuk Pengalaman Berkendara Terbaik Anda.
             Global Service Audio Mobil bekerja pada layanan Jasa dan Reparasi untuk segala Audio Mobil.
-        Kami juga menyediakan produk audio mobil pada online marketplace kami.</p>
-        <a href="<?= url_to('layanan_publik_daftar') // Pastikan nama rute ini ada ?>" class="btn btn-hero-primary">Lihat Layanan Kami</a>
+            Kami juga menyediakan produk audio mobil pada online marketplace kami.</p>
+        <a href="<?= url_to('layanan_publik_daftar') // Pastikan nama rute ini ada 
+                    ?>" class="btn btn-hero-primary">Lihat Layanan Kami</a>
         <a href="https://maps.app.goo.gl/pRWJi3bhmNkAQSr76" target="_blank" class="btn btn-hero-primary ml-2">
             <i class="fas fa-map-marker-alt mr-2"></i> Lokasi Kami
         </a>
-        <?php if(session()->get('logged_in_pelanggan')): ?>
-            <a href="<?= url_to('booking_form_show') // Pastikan nama rute ini ada ?>" class="btn btn-hero-secondary mt-3">Booking Sekarang</a>
-        <?php elseif(!session()->get('logged_in_admin') && !session()->get('logged_in_pelanggan')): ?>
-            <a href="<?= url_to('login_pelanggan_show') // Pastikan nama rute ini ada ?>" class="btn btn-hero-secondary mt-3">Login & Booking</a>
+        <?php if (session()->get('logged_in_pelanggan')): ?>
+            <a href="<?= url_to('booking_form_show') // Pastikan nama rute ini ada 
+                        ?>" class="btn btn-hero-secondary mt-3">Booking Sekarang</a>
+        <?php elseif (!session()->get('logged_in_admin') && !session()->get('logged_in_pelanggan')): ?>
+            <a href="<?= url_to('login_pelanggan_show') // Pastikan nama rute ini ada 
+                        ?>" class="btn btn-hero-secondary mt-3">Login & Booking</a>
         <?php endif; ?>
-         <div class="scroll-down-indicator">
+        <div class="scroll-down-indicator">
             <i class="fas fa-angle-double-down"></i>
         </div>
-        </div>
     </div>
+</div>
 </div>
 
 <div class="container page-section">
@@ -75,18 +79,26 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('pageStyles') ?>
-    <?php // Jika Anda belum include Font Awesome di layout utama, tambahkan di sini atau di layout ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        .hero-section {
-            background: linear-gradient(rgba(10, 132, 255, 0.85), rgba(0, 95, 187, 0.85)), url('<?= base_url('images/hero-background.jpg') ?>') no-repeat center center/cover; /* Ganti dengan path gambar Anda */
-            color: white;
-            padding: 6rem 0;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh; /* Tinggi minimal hero section */
-        }
-    </style>
+<?php // Jika Anda belum include Font Awesome di layout utama, tambahkan di sini atau di layout 
+?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .hero-section {
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('<?= base_url('images/latar-beranda.jpg') ?>') no-repeat center center;
+
+        background-size: cover;
+        /* Membuat gambar menutupi seluruh area section */
+
+        /* Style asli Anda dipertahankan */
+        color: white;
+        padding: 6rem 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh;
+    }
+</style>
 <?= $this->endSection() ?>

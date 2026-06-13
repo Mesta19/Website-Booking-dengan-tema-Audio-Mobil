@@ -1,4 +1,5 @@
-<?= $this->extend('template/layout') // Menggunakan layout dari app/Views/template/layout.php ?>
+<?= $this->extend('template/layout') // Menggunakan layout dari app/Views/template/layout.php 
+?>
 
 <?= $this->section('title') ?>
 Registrasi Pelanggan - Global Service Audio
@@ -9,25 +10,25 @@ Registrasi Pelanggan - Global Service Audio
     <div class="form-container">
         <h2>Registrasi Akun Pelanggan Baru</h2>
 
-        <?php if(session()->getFlashdata('success')): ?>
+        <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success" role="alert">
                 <?= session()->getFlashdata('success') ?>
             </div>
         <?php endif; ?>
-        <?php if(session()->getFlashdata('error')): ?>
+        <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger" role="alert">
                 <?= session()->getFlashdata('error') ?>
             </div>
         <?php endif; ?>
 
-        <?php 
+        <?php
         $validation = session()->getFlashdata('validation');
-        if(!$validation && isset($validator)) { 
+        if (!$validation && isset($validator)) {
             $validation = $validator;
         }
         ?>
 
-        <?php if($validation): ?>
+        <?php if ($validation): ?>
             <div class="alert alert-danger validation-errors" role="alert">
                 <strong>Oops! Ada kesalahan saat validasi:</strong>
                 <ul>
@@ -39,7 +40,8 @@ Registrasi Pelanggan - Global Service Audio
         <?php endif; ?>
 
         <form action="<?= url_to('AuthController::prosesRegistrasiPelanggan') ?>" method="post">
-            <?= csrf_field() // Proteksi CSRF ?>
+            <?= csrf_field() // Proteksi CSRF 
+            ?>
 
             <div class="form-group">
                 <label for="nama_pelanggan">Nama Lengkap</label>
@@ -73,4 +75,22 @@ Registrasi Pelanggan - Global Service Audio
         </p>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const namaInput = document.getElementById("nama_pelanggan");
+        const hpInput = document.getElementById("no_hp");
+
+        // Hanya huruf dan spasi untuk nama
+        namaInput.addEventListener("input", function() {
+            this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+        });
+
+        // Hanya angka untuk no HP
+        hpInput.addEventListener("input", function() {
+            this.value = this.value.replace(/[^0-9]/g, "");
+        });
+    });
+</script>
+
 <?= $this->endSection() ?>
